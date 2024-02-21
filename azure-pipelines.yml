@@ -1,5 +1,6 @@
 - task: SonarQubePrepare@5
   inputs:
+    SonarQube: 'devops'
     scannerMode: 'MSBuild'
     projectKey: 'sqa_2cc9eec94fec692108d4021bae1e7de31da76980'
     projectName: 'CI_CD_PIPELINE_01'
