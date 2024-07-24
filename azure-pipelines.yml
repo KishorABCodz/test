@@ -1,13 +1,27 @@
-trigger:none
+trigger: none # No CI trigger for this pipeline
+ 
 pr:
   branches:
-  include:
-    {*}
-stages:
+    include:
+      - kishor
+      - main
+      - sample1
+
+ 
 stages:
 - stage: CheckoutT3
-  displayName: 'Checkout t3 Branch'
+  displayName: 'Checkout main Branch'
   jobs:
   - job: CheckoutT3Job
-    displayName: 'Checkout t3 Job'
+    displayName: 'Checkout main Job'
     pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - checkout: self
+      persistCredentials: true
+      displayName: 'Checkout source code from main'
+    - script: |
+        git fetch origin main
+        git checkout main
+      displayName: 'Fetch and checkout main branch'
+ 
