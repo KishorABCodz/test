@@ -77,4 +77,10 @@ jobs:
     - name: Checkout Source Branch
       uses: actions/checkout@v3
       with:
-        re
+        ref: ${{ github.event.pull_request.head.ref }}
+        persist-credentials: true
+        clean: true
+        fetch-depth: 0
+
+    - name: Run finalize script
+      run: echo "Finalizing for branch ${{ github.event.pull_request.head.ref }}..."
